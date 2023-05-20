@@ -1,0 +1,115 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "poppins";
+  src: url(font/poppins-regular-webfont.woff) format("woff");
+}
+@font-face {
+  font-family: "poppins-semibolditalic";
+  src: url(font/poppins-semibolditalic-webfont.woff) format("woff");
+}
+body {
+  font-family: "poppins";
+}
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  background-color: aqua;
+  height: 60px;
+  padding: 0 40px;
+  align-items: center;
+}
+.navbar .logo {
+  font-family: "poppins-semibolditalic";
+  font-size: 1.4rem;
+  letter-spacing: 2px;
+  color: rgb(160, 17, 243);
+}
+.navbar .logo span {
+  color: rgb(250, 18, 10);
+}
+.navbar ul {
+  display: flex;
+  list-style: none;
+  width: 40%;
+  justify-content: space-between;
+}
+.navbar ul a {
+  text-decoration: none;
+}
+.navbar .menu-toggel {
+  display: none;
+  flex-direction: column;
+  height: 20px;
+  justify-content: space-between;
+  position: relative;
+}
+.navbar .menu-toggel input {
+  position: absolute;
+  width: 28px;
+  height: 40px;
+  top: -3px;
+  left: -5px;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+}
+.navbar .menu-toggel span {
+  display: block;
+  background-color: aliceblue;
+  width: 28px;
+  height: 3px;
+  border-radius: 3px;
+  transition: all 0.5s ease-in-out;
+}
+
+/* Animasi */
+.navbar .menu-toggel span:nth-child(2) {
+  transform-origin: 0 0;
+}
+.navbar .menu-toggel span:nth-child(4) {
+  transform-origin: 0 100%;
+}
+.navbar .menu-toggel input:checked ~ span:nth-child(2) {
+  transform: rotate(45deg) translate(-1px, -1px);
+}
+.navbar .menu-toggel input:checked ~ span:nth-child(4) {
+  transform: rotate(-45deg) translate(-1px, 0);
+}
+.navbar .menu-toggel input:checked ~ span:nth-child(3) {
+  transform: scale(0);
+  opacity: 0;
+}
+
+/* media queries */
+/*laptop*/
+
+@media (max-width: 768px) {
+}
+@media (max-width: 576px) {
+  .navbar .menu-toggel {
+    display: flex;
+  }
+  .navbar ul {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100vh;
+    background-color: rgb(180, 78, 232);
+    flex-direction: column;
+    align-items: center;
+
+    z-index: -1;
+    transform: translateX(100%);
+    transition: all 1s;
+    opacity: 0;
+  }
+  .navbar ul.slide {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
